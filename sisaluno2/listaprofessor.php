@@ -33,6 +33,7 @@
             border-radius: 8px;
             -webkit-box-shadow: 3px 3px 3px rgb(43, 19, 75);
             border: 3px solid black;
+            
 
         }
 
@@ -40,6 +41,7 @@
             width: 100%;
             max-width: 800px;
             border-collapse: collapse;
+            margin-bottom:20px;
 
         }
 
@@ -57,6 +59,7 @@
             border-left: black 1px solid;
             border-bottom: 1px solid black;
             text-align: center;
+            
 
         }
 
@@ -92,7 +95,7 @@
      */
     require_once('conexao.php');
 
-    $retorno = $conexao->prepare('SELECT * FROM aluno');
+    $retorno = $conexao->prepare('SELECT * FROM professor');
     $retorno->execute();
 
     ?>
@@ -104,6 +107,7 @@
                     <th>ID</th>
                     <th>Nome</th>
                     <th>Idade</th>
+                    <th>CPF</th>
                     <th>Data de nascimento</th>
                     <th>Endereço</th>
                     <th>Estatus</th>
@@ -127,6 +131,9 @@
                             <?php echo $value['idade'] ?>
                         </td>
                         <td class="right">
+                            <?php echo $value['cpf'] ?>
+                        </td>
+                        <td class="right">
                             <?php echo $value['datanascimento'] ?>
                         </td>
                         <td class="right">
@@ -136,17 +143,17 @@
                             <?php echo $value['estatus'] ?>
                         </td>
 
-                        <td class="vol-alt"> <button style="background: yellowgreen;" class='button button3'><a href='index.php'>voltar</a></td>
+                        <td class="vol-alt"> <button  style="background: yellowgreen;" class='button button3'><a href='cadgeral.php'>voltar</a></td>
                         <td  class="vol-alt">
-                            <form method="POST" action="altaluno.php">
-                                <input  name="id" type="hidden" value="<?php echo $value['id']; ?>" />
-                                <button  style="background: lightblue;"  name="alterar" type="submit">Alterar</button>
+                            <form method="POST" action="altaprofessor.php">
+                                <input name="id" type="hidden" value="<?php echo $value['id']; ?>" />
+                                <button name="alterar" style="background: lightblue;" type="submit">Alterar</button>
                             </form>
                         </td>
                         <td  class="vol-alt">
-                            <form method="GET" action="crudaluno.php">
-                                <input name="id" type="hidden" value="<?php echo $value['id']; ?>" />
-                                <button style="background: red;" name="excluir" type="submit">Excluir</button>
+                            <form method="GET" action="crudprofessor.php">
+                                <input name="id" type="hidden"  value="<?php echo $value['id']; ?>" />
+                                <button name="excluir" style="background: red;" type="submit">Excluir</button>
                             </form>
 
                         </td>

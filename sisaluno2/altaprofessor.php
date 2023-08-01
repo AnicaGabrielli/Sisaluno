@@ -75,7 +75,7 @@ color:  white;
    $id = $_POST['id'];
 
    ##sql para selecionar apens um aluno
-   $sql = "SELECT * FROM aluno where id= :id";
+   $sql = "SELECT * FROM professor where id= :id";
    
    # junta o sql a conexao do banco
    $retorno = $conexao->prepare($sql);
@@ -91,6 +91,7 @@ color:  white;
    
    ##armazena retorno em variaveis
    $nome = $array_retorno['nome'];
+   $cpf = $array_retorno['cpf'];
    $idade = $array_retorno['idade'];
    $datanascimento = $array_retorno['datanascimento'];
    $endereco = $array_retorno['endereco'];
@@ -99,10 +100,11 @@ color:  white;
 
 ?>
 
-  <div class="box">
-  <form method="POST" action="crudaluno.php">
-  <fieldset>
-                      <legend><b>Formulário de cadastro dicente</b></legend><br>
+ <div class="box">
+ <form method="POST" action="crudprofessor.php">
+        
+        <fieldset>
+                      <legend><b>Formulário de cadastro docente</b></legend><br>
                       <div class="imputBox">
                           <input type="text" name="nome"  value=<?php echo $nome?> class="inputUser" required>
                           <label for="nome" class="labelInput" >Nome completo</label>
@@ -111,7 +113,10 @@ color:  white;
                           <input type="number" name="idade"  value=<?php echo $idade?> class="inputUser" required> 
                           <label for="idade" class="labelInput" >Idade</label>
                       </div><br><br>
-                
+                      <div class="imputBox">
+                      <input type =" text " name ="cpf" value=<?php echo $cpf?> class="inputUser" required>
+                       <label for=" cpf " class="labelInput">CPF</label>
+                      </div><br><br>
                       <div class="imputBox">
                           <input type="date" name="datanascimento"  value=<?php echo $datanascimento?> class="inputUser">
                           <label for="datanascimento" class="labelInput" >Data de nascimento</label>
@@ -122,7 +127,7 @@ color:  white;
                       </div><br><br>
                       <div class="imputBox">
                           <input type="text" name="estatus" value=<?php echo $estatus?> class="inputUser" required>
-                          <label for="estatus" class="labelInput" >Estatus (ap ou rp):</label>
+                          <label for="estatus" class="labelInput" >Estatus (1 ou 2):</label>
                       </div><br><br>
                      <div class="bnt centro">
                      <input type="hidden" name="id" id="" value=<?php echo $id ?> >
@@ -130,7 +135,7 @@ color:  white;
                   </div>
                
                   </fieldset>
-  </form>
-  </div>
+        </form>
+ </div>
 </body>
 </html>

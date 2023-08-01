@@ -22,30 +22,17 @@ body{
     height: 50vw;
     background: white;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
-.left-login{
+.right-professor{
     width: 50vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-.left-login > h1{
-    color: #2f2841 ;
-    font-size: 1.8vw;
-
-}
-.right-login{
-    width: 50vw;
-    height: 100vh;
+    height: 50vh;
     display: flex;
     justify-content: center;
     align-items: center;  
 }
-.card-login{
+.card-professor{
     width: 60%;
     display: flex;
     justify-content: center;
@@ -56,7 +43,7 @@ body{
     border-radius: 20px;
     box-shadow: 0px 10px 40px #00000089;
 }
-.card-login > h1{
+.card-professor > h1{
     color :  #2f2841 ;
     font-weight: 800px;
     margin: 0;
@@ -70,7 +57,7 @@ body{
     margin: 10px 0px;
     padding-right: 45px;
 }
-.bnt-login{
+.bnt-cad{
 width: 100%;
 padding: 16px 0px;
 margin: 25px;
@@ -85,16 +72,16 @@ background: #fffafa;
 cursor: pointer;
 box-shadow: 0px 10px 40px -12px #00000089;
 }
-.bnt-login a {
+.bnt-cad a {
 text-decoration: none;
 color: #2b134b;
 }
-.left-login-img{
+.left-aluno-img{
     width: 35vw;
 }
 
 @media only screen and (max-width:950px){
-    .card-login {
+    .card-professor {
         width:85%;
 
     }
@@ -126,16 +113,30 @@ color: #2b134b;
 </head>
 <body>
     <div class="main-login">
-        <div class="left-login">
-            <h1>Controle Academico <br>Instituto Federal - Campus Guanambi</h1>
-            <img src="imagem.svg" alt="imagem" class="left-login-img">
-        </div>
-        <div class="right-login">
-            <div class="card-login">
-                <h1>Bem Vindo!</h1>
+        <div class="right-professor">
+            <div class="card-professor">
+                <h1>PROFESSOR</h1>
                 <div class="textfield">
-                    <button class="bnt-login"> <a href="cadgeral.php">Cadastro</a></button>
-                    <button class="bnt-login"><a href="cadgeral.php">Lista de cadastros</a></button>
+                    <button class="bnt-cad"> <a href="cadprofessor.php">Cadastro</a></button>
+                    <button class="bnt-cad"><a href="listaprofessor.php">Lista de Professores</a></button>
+                </div>
+            </div>
+        </div>
+        <div class="right-professor">
+            <div class="card-professor">
+                <h1>ALUNO</h1>
+                <div class="textfield">
+                    <button class="bnt-cad"> <a href="cadaluno.php">Cadastro</a></button>
+                    <button class="bnt-cad"><a href="listaluno.php">Lista de alunos</a></button>
+                </div>
+            </div>
+        </div>
+        <div class="right-professor">
+            <div class="card-professor">
+                <h1>DISCIPLINA</h1>
+                <div class="textfield">
+                    <button class="bnt-cad"> <a href="caddisciplina.php">Cadastro</a></button>
+                    <button class="bnt-cad"><a href="listadisciplina.php">Lista de disciplinas</a></button>
                 </div>
             </div>
         </div>

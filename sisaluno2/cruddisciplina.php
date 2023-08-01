@@ -7,16 +7,15 @@ require_once('conexao.php');
 ##cadastrar
 if(isset($_GET['cadastrar'])){
         ##dados recebidos pelo metodo GET
-        $nome = $_GET["nomealuno"];
-        $idade = $_GET["idade"];
-        $datanascimento = $_GET["datanascimento"];
-        $endereco = $_GET["endereco"];
-        $estatus = $_GET["estatus"];
+        $nomedisciplina = $_GET["nomedisciplina"];
+        $ch = $_GET["ch"];
+        $semestre = $_GET["semestre"];
+        $idprofessor = $_GET["idprofessor"];
 
 
         ##codigo SQL
-        $sql = "INSERT INTO aluno(nome,idade,datanascimento,endereco, estatus) 
-                VALUES('$nome','$idade','$datanascimento','$endereco', '$estatus')";
+        $sql = "INSERT INTO disciplina(nomedisciplina, ch, semestre, idprofessor) 
+                VALUES('$nomedisciplina','$ch','$semestre','$idprofessor')";
 
         ##junta o codigo sql a conexao do banco
         $sqlcombanco = $conexao->prepare($sql);
@@ -24,8 +23,8 @@ if(isset($_GET['cadastrar'])){
         ##executa o sql no banco de dados
         if($sqlcombanco->execute())
             {
-                echo " <strong>OK!</strong> o aluno
-                $nome foi Incluido com sucesso!!!";         
+                echo " <strong>OK!</strong> a disciplina
+                $nomedisciplina foi Incluido com sucesso!!!";         
                 echo " <button class='button'><a href='index.php'>voltar</a></button>";
             }
         }
@@ -33,27 +32,25 @@ if(isset($_GET['cadastrar'])){
 if(isset($_POST['update'])){
 
     ##dados recebidos pelo metodo POST
-    $nome = $_POST["nome"];
-    $idade = $_POST["idade"];
-    $datanascimento = $_POST["datanascimento"];
-    $endereco = $_POST["endereco"];
-    $estatus = $_POST["estatus"];
+    $nomedisciplina = $_POST["nomedisciplina"];
+    $ch = $_POST["ch"];
+    $semestre = $_POST["semestre"];
+    $idprofessor = $_POST["idprofessor"];
     $id = $_POST["id"];
 
    
       ##codigo sql
-    $sql = "UPDATE  aluno SET nome= :nome, idade= :idade, datanascimento= :datanascimento, endereco=:endereco,estatus= :estatus WHERE id= :id ";
+    $sql = "UPDATE  disciplina SET nomedisciplina= :nomedisciplina, ch= :ch, semestre= :semestre, idprofessor= :idprofesor WHERE id= :id ";
    
     ##junta o codigo sql a conexao do banco
     $stmt = $conexao->prepare($sql);
 
     ##diz o paramentro e o tipo  do paramentros
     $stmt->bindParam(':id',$id, PDO::PARAM_INT);
-    $stmt->bindParam(':nome',$nome, PDO::PARAM_STR);
-    $stmt->bindParam(':idade',$idade, PDO::PARAM_INT);
-    $stmt->bindParam(':datanascimento',$datanascimento, PDO::PARAM_STR);
-    $stmt->bindParam(':endereco',$endereco, PDO::PARAM_STR);
-    $stmt->bindParam(':estatus',$estatus, PDO::PARAM_STR);
+    $stmt->bindParam(':nomedisciplina',$nomedisciplina, PDO::PARAM_STR);
+    $stmt->bindParam(':ch',$ch, PDO::PARAM_INT);
+    $stmt->bindParam(':semestre',$semestre, PDO::PARAM_STR);
+    $stmt->bindParam(':idprofesor',$idprofessor, PDO::PARAM_STR);
 
     $stmt->execute();
  
@@ -62,7 +59,7 @@ if(isset($_POST['update'])){
     if($stmt->execute())
         {
             echo " <strong>OK!</strong> o aluno
-             $nome foi Alterado com sucesso!!!"; 
+             $nomedisciplina foi Alterado com sucesso!!!"; 
 
             echo " <button class='button'><a href='index.php'>voltar</a></button>";
         }
@@ -73,20 +70,20 @@ if(isset($_POST['update'])){
 ##Excluir
 if(isset($_GET['excluir'])){
     $id = $_GET['id'];
-    $sql ="DELETE FROM `aluno` WHERE id={$id}";
+    $sql ="DELETE FROM `disciplina` WHERE id={$id}";
     $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);   
     $stmt = $conexao->prepare($sql);
     $stmt->execute();
 
     if($stmt->execute())
         {
-            echo " <strong>OK!</strong> o aluno
+            echo " <strong>OK!</strong> a disciplina
              $id foi excluido!!!"; 
 
-            echo " <button class='button'><a href='listaluno.php'>voltar</a></button>";
+            echo " <button class='button'><a href='lisdisciplina.php'>voltar</a></button>";
         }
 
 }
 
         
-?>
+?> 

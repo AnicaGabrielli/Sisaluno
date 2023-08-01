@@ -18,7 +18,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 50vw;
+            min-height: 100vw;
             background-color: white;
         }
 
@@ -92,7 +92,7 @@
      */
     require_once('conexao.php');
 
-    $retorno = $conexao->prepare('SELECT * FROM aluno');
+    $retorno = $conexao->prepare('SELECT * FROM disciplina');
     $retorno->execute();
 
     ?>
@@ -103,13 +103,9 @@
                 <tr>
                     <th>ID</th>
                     <th>Nome</th>
-                    <th>Idade</th>
-                    <th>Data de nascimento</th>
-                    <th>Endereço</th>
-                    <th>Estatus</th>
-                    <th>Voltar</th>
-                    <th>Alterar</th>
-                    <th>Excluir</th>
+                    <th>CH</th>
+                    <th>Semestre</th>
+                    <th>Id professor</th>
                 </tr>
             </thead>
             <tbody>
@@ -121,30 +117,28 @@
                             <?php echo $value['id'] ?>
                         </td>
                         <td class="right">
-                            <?php echo $value['nome'] ?>
+                            <?php echo $value['nomedisciplina'] ?>
                         </td>
                         <td class="right">
-                            <?php echo $value['idade'] ?>
+                            <?php echo $value['ch'] ?>
                         </td>
                         <td class="right">
-                            <?php echo $value['datanascimento'] ?>
+                            <?php echo $value['semestre'] ?>
                         </td>
                         <td class="right">
-                            <?php echo $value['endereco'] ?>
+                            <?php echo $value['idprofessor'] ?>
                         </td>
-                        <td class="right">
-                            <?php echo $value['estatus'] ?>
-                        </td>
+
 
                         <td class="vol-alt"> <button style="background: yellowgreen;" class='button button3'><a href='index.php'>voltar</a></td>
                         <td  class="vol-alt">
-                            <form method="POST" action="altaluno.php">
+                            <form method="POST" action="altdisciplina.php">
                                 <input  name="id" type="hidden" value="<?php echo $value['id']; ?>" />
                                 <button  style="background: lightblue;"  name="alterar" type="submit">Alterar</button>
                             </form>
                         </td>
                         <td  class="vol-alt">
-                            <form method="GET" action="crudaluno.php">
+                            <form method="GET" action="cruddisciplina.php">
                                 <input name="id" type="hidden" value="<?php echo $value['id']; ?>" />
                                 <button style="background: red;" name="excluir" type="submit">Excluir</button>
                             </form>
